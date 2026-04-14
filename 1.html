@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机名言项目</title>
+    <link rel="stylesheet" href="2.css">
+</head>
+
+<body>
+    <div class="book_container" id="bookContainer">
+        <div class="book" id="book">
+            <!--  it used 2 container to pack these two part of book,one container if for 3D actions
+               and onther one is for 2D positions -->
+            <div class="inner_page">
+                <div class="page_front">
+                    <div class="real_content">
+                        <p id="rightText">Processing text...</p>
+                        <cite id="author"></cite>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="cover_page" id="coverPage">
+                <div class="page_front">
+                    <div class="cover_style">
+                        <h1> Famous quotes</h1>
+                        <div class="dividingLine"></div>
+                        <p>Daily quotes for you</p>
+                    </div>
+                </div>
+                <div class="back_page"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn_group">
+        <button id="prevBtn" disabled> previous page</button>
+        <!-- It is disabled until the user goes to the next page to activate it.-->
+        <button id="nextBtn">next page</button>
+        <button id="copyBtn">copy text</button>
+    </div>
+
+    <script src="3.js"></script>
+
+
+</body>
+
+</html>

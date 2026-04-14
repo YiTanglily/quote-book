@@ -1,0 +1,217 @@
+:root {
+    --color-of-page: #fff9e6;
+    --width-of-book: 360px;
+    --height-of-book: 480px;
+    /* custom value */
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('background pic.png');
+    background-size: 100% 100%;
+    perspective: 2200px;
+    /* this property  prepare the container for the 3D rendering context */
+    overflow: hidden;
+}
+
+.book_container {
+    margin-top: 40px;
+    height: var(--height-of-book);
+    width: var(--width-of-book);
+    position: relative;
+    transform-style: preserve-3d;
+    /* this property makes a 3D shape */
+    transition: transform 1.2s ease;
+}
+
+.book_container.open {
+    transform: translateX(50%);
+}
+
+/* bookline in the middle */
+
+.book {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.inner_page,
+.cover_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    /* The Easing Function controls the acceleration and deceleration of the 3D animation. */
+}
+
+
+.page_front,
+.back_page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-of-page);
+    border: black 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    /* it is used to hide the back side of the page. */
+}
+
+.back_page {
+    transform: rotateY(180deg);
+}
+
+
+/* the part of cover content  */
+.cover_page {
+    border: 1.5px solid rgb(0, 96, 0);
+    border-radius: 0 2px 2px 0;
+}
+
+.page_front {
+    border: 1.5px solid rgb(0, 96, 0);
+    border-radius: 0 2px 2px 0;
+}
+
+.cover_style {
+    border: 1px solid rgb(0, 96, 0);
+    padding: 40px;
+    text-align: center;
+}
+
+.cover_style h1 {
+    font-size: 2rem;
+    color: rgb(3, 58, 3);
+}
+
+.cover_style .dividingLine {
+    background: rgb(0, 96, 0);
+    height: 1px;
+    margin: 15px auto;
+}
+
+.cover_style p {
+    font-size: 1rem;
+    color: rgb(3, 58, 3);
+}
+
+
+/* the part of inner content */
+.real_content p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: rgb(3, 58, 3);
+}
+
+.real_content cite {
+    display: block;
+    margin-top: 20px;
+    color: rgb(3, 58, 3);
+}
+
+/* button style */
+
+.btn_group {
+
+    margin: 20px;
+    z-index: 99;
+    display: flex;
+    gap: 30px
+}
+
+.btn_group button {
+    padding: 5px 5px;
+    border: none;
+    border-radius: 7px;
+    background: rgb(252, 164, 179);
+    color: rgb(3, 58, 3);
+    font-weight: 300;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.btn_group button:disabled {
+    background: #d3d3d3;
+    color: #888888;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* responsive design */
+
+@media screen and (max-width: 768px) {
+    :root {
+        --width-of-book: 280px;
+        --height-of-book: 400px;
+
+    }
+
+    .book_container.open {
+        transform: translateX(25%);
+    }
+
+    .page_front,
+    .page_back {
+        padding: 20px;
+    }
+
+    .cover_style h1 {
+        font-size: 1.5rem;
+    }
+
+    .real_content p {
+        font-size: 1.1rem;
+    }
+
+
+    .btn_group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+.page-dynamic {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+
+.flipped {
+    transform: rotateY(-180deg) !important;
+}
